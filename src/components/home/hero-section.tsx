@@ -8,7 +8,7 @@ export function HeroSection() {
       <div className="page-container">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            Hi, I'm <span className="text-primary">Jane Doe</span>
+            Hi, I'm <span className="text-primary">Adham-Sayed</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
             A passionate web developer building beautiful interfaces and experiences.

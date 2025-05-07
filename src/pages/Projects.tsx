@@ -9,50 +9,50 @@ export default function Projects() {
   
   const projects = [
     {
-      title: "Project Alpha",
-      description: "A responsive web application with modern UI/UX principles and animations.",
-      tags: ["React", "TypeScript", "Tailwind CSS"],
-      category: "web",
-      featured: true,
-      link: "https://example.com"
-    },
-    {
-      title: "Portfolio Redesign",
-      description: "A complete redesign of a client portfolio with focus on minimalism and accessibility.",
-      tags: ["Next.js", "Framer Motion", "Figma"],
-      category: "design",
-      featured: true,
-      link: "https://example.com"
-    },
-    {
-      title: "Commerce Platform",
-      description: "An e-commerce solution with inventory management and payment processing.",
+      title: "E-Commerce Store",
+      description: "A full-featured online shopping platform with product catalog, cart, and secure checkout.",
       tags: ["React", "Node.js", "MongoDB"],
       category: "web",
       featured: true,
       link: "https://example.com"
     },
     {
-      title: "Task Manager",
-      description: "A productivity app to manage personal and team tasks with deadline tracking.",
-      tags: ["Vue.js", "Supabase", "Tailwind CSS"],
+      title: "Social Media Dashboard",
+      description: "Analytics dashboard for social media managers with real-time data visualization.",
+      tags: ["Vue.js", "Firebase", "Chart.js"],
+      category: "web",
+      featured: true,
+      link: "https://example.com"
+    },
+    {
+      title: "Travel Application",
+      description: "Mobile app for travelers to discover new places, plan itineraries, and share experiences.",
+      tags: ["React Native", "GraphQL", "AWS"],
+      category: "app",
+      featured: true,
+      link: "https://example.com"
+    },
+    {
+      title: "Restaurant Booking System",
+      description: "Online reservation system for restaurants with table management and customer notifications.",
+      tags: ["Next.js", "PostgreSQL", "Stripe"],
+      category: "web",
+      featured: false,
+      link: "https://example.com"
+    },
+    {
+      title: "Fitness Tracker",
+      description: "Mobile application for tracking workouts, nutrition, and achieving fitness goals.",
+      tags: ["Flutter", "Firebase", "HealthKit"],
       category: "app",
       featured: false,
       link: "https://example.com"
     },
     {
-      title: "Brand System",
-      description: "A comprehensive brand identity design for a tech startup.",
-      tags: ["Figma", "Illustrator", "UI Design"],
+      title: "Corporate Website",
+      description: "Modern, responsive website design for a financial services company.",
+      tags: ["HTML/CSS", "JavaScript", "WordPress"],
       category: "design",
-      featured: false,
-      link: "https://example.com"
-    },
-    {
-      title: "News Aggregator",
-      description: "An app that collects and organizes news from various sources based on user preferences.",
-      tags: ["React Native", "Redux", "API Integration"],
-      category: "app",
       featured: false,
       link: "https://example.com"
     },

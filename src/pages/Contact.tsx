@@ -69,11 +69,11 @@ export default function Contact() {
             <div className="space-y-6">
               <div>
                 <h4 className="font-medium mb-2">Email</h4>
-                <p className="text-muted-foreground">hello@janedoe.com</p>
+                <p className="text-muted-foreground">adhamebnsayedbnhanafi@gmail.com</p>
               </div>
               <div>
                 <h4 className="font-medium mb-2">Location</h4>
-                <p className="text-muted-foreground">San Francisco, CA</p>
+                <p className="text-muted-foreground">Egypt, Giza</p>
               </div>
               <div>
                 <h4 className="font-medium mb-2">Follow Me</h4>

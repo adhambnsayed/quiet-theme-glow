@@ -2,7 +2,7 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { SectionHeading } from "@/components/layout/section-heading";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -50,7 +50,7 @@ export default function Home() {
             <div className="w-full md:w-1/2">
               <div className="aspect-square bg-secondary rounded-lg flex items-center justify-center">
                 <div className="w-48 h-48 rounded-full bg-muted-foreground/10 flex items-center justify-center">
-                  <span className="text-xl font-medium">Jane Doe</span>
+                  <span className="text-xl font-medium">Adham-Sayed</span>
                 </div>
               </div>
             </div>
