@@ -426,6 +426,14 @@ export default function BlogPost() {
     );
   }
 
+  // Create excerpt from content by stripping HTML and taking first 150 characters
+  const createExcerpt = (content: string) => {
+    // Remove HTML tags and get plain text
+    const plainText = content.replace(/<[^>]+>/g, '');
+    // Return first 150 characters
+    return plainText.trim().substring(0, 150) + '...';
+  };
+
   return (
     <div className="pt-28" dir="rtl">
       <div className="page-container">
@@ -483,7 +491,9 @@ export default function BlogPost() {
                           {relatedPost.title}
                         </Link>
                       </h3>
-                      <p className="text-muted-foreground text-sm line-clamp-2">{relatedPost.excerpt}</p>
+                      <p className="text-muted-foreground text-sm line-clamp-2">
+                        {createExcerpt(relatedPost.content)}
+                      </p>
                     </CardContent>
                   </Card>
                 ))}
