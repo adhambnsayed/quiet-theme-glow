@@ -13,7 +13,7 @@ export function SectionHeading({
   const alignmentClasses = {
     left: "text-left",
     center: "text-center mx-auto",
-    right: "text-right ml-auto",
+    right: "text-right mr-auto",
   };
 
   return (

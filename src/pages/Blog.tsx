@@ -11,51 +11,51 @@ export default function Blog() {
   const blogPosts = [
     {
       id: 1,
-      title: "Building Responsive Interfaces",
-      excerpt: "Learn how to create interfaces that work across all device sizes without compromise.",
-      date: "May 1, 2025",
-      category: "Development",
-      readTime: "5 min read"
+      title: "بناء واجهات متجاوبة",
+      excerpt: "تعلم كيفية إنشاء واجهات تعمل على جميع أحجام الأجهزة دون تنازل.",
+      date: "1 مايو 2025",
+      category: "تطوير",
+      readTime: "5 دقائق قراءة"
     },
     {
       id: 2,
-      title: "The Future of Web Animation",
-      excerpt: "Exploring modern animation techniques that enhance user experience without sacrificing performance.",
-      date: "April 15, 2025",
-      category: "Design",
-      readTime: "8 min read"
+      title: "مستقبل الرسوم المتحركة على الويب",
+      excerpt: "استكشاف تقنيات الرسوم المتحركة الحديثة التي تعزز تجربة المستخدم دون التضحية بالأداء.",
+      date: "15 أبريل 2025",
+      category: "تصميم",
+      readTime: "8 دقائق قراءة"
     },
     {
       id: 3,
-      title: "Accessibility in Modern Web Applications",
-      excerpt: "Why accessibility should be a priority and how to implement it in your projects.",
-      date: "March 22, 2025",
-      category: "Development",
-      readTime: "7 min read"
+      title: "إمكانية الوصول في تطبيقات الويب الحديثة",
+      excerpt: "لماذا يجب أن تكون إمكانية الوصول أولوية وكيفية تنفيذها في مشاريعك.",
+      date: "22 مارس 2025",
+      category: "تطوير",
+      readTime: "7 دقائق قراءة"
     },
     {
       id: 4,
-      title: "My Development Workflow in 2025",
-      excerpt: "Tools, extensions, and processes I use to stay productive and focused.",
-      date: "March 10, 2025",
-      category: "Workflow",
-      readTime: "6 min read"
+      title: "سير عملي التطويري في 2025",
+      excerpt: "الأدوات والملحقات والعمليات التي أستخدمها للبقاء منتجًا ومركزًا.",
+      date: "10 مارس 2025",
+      category: "سير العمل",
+      readTime: "6 دقائق قراءة"
     },
     {
       id: 5,
-      title: "Designing with Dark Mode in Mind",
-      excerpt: "Best practices for creating beautiful interfaces that work well in both light and dark modes.",
-      date: "February 28, 2025",
-      category: "Design",
-      readTime: "5 min read"
+      title: "التصميم مع الوضع الداكن في الاعتبار",
+      excerpt: "أفضل الممارسات لإنشاء واجهات جميلة تعمل بشكل جيد في كل من الوضع الفاتح والداكن.",
+      date: "28 فبراير 2025",
+      category: "تصميم",
+      readTime: "5 دقائق قراءة"
     },
     {
       id: 6,
-      title: "State Management Simplified",
-      excerpt: "Modern approaches to managing state in React applications without the complexity.",
-      date: "February 15, 2025",
-      category: "Development",
-      readTime: "9 min read"
+      title: "إدارة الحالة ببساطة",
+      excerpt: "نهج حديث لإدارة الحالة في تطبيقات رياكت دون تعقيد.",
+      date: "15 فبراير 2025",
+      category: "تطوير",
+      readTime: "9 دقائق قراءة"
     },
   ];
 
@@ -68,20 +68,58 @@ export default function Blog() {
   const categories = [...new Set(blogPosts.map(post => post.category))];
 
   return (
-    <div className="pt-28">
+    <div className="pt-28" dir="rtl">
       <div className="page-container">
         <SectionHeading
-          title="My Blog"
-          subtitle="Thoughts, insights and ideas that I share with the world"
-          align="left"
+          title="مدونتي"
+          subtitle="أفكار ورؤى وأفكار أشاركها مع العالم"
+          align="right"
         />
 
         <div className="grid md:grid-cols-3 gap-10">
+          <div>
+            <div className="border rounded-lg p-6 sticky top-24">
+              <h3 className="font-medium mb-4">التصنيفات</h3>
+              <div className="space-y-2">
+                {categories.map((category) => (
+                  <Button
+                    key={category}
+                    variant="ghost"
+                    className="w-full justify-start"
+                    onClick={() => setSearchTerm(category)}
+                  >
+                    {category}
+                  </Button>
+                ))}
+                {searchTerm && (
+                  <Button
+                    variant="outline"
+                    className="w-full mt-4"
+                    onClick={() => setSearchTerm("")}
+                  >
+                    مسح التصفية
+                  </Button>
+                )}
+              </div>
+
+              <div className="mt-8 pt-8 border-t">
+                <h3 className="font-medium mb-4">النشرة الإخبارية</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  اشترك للحصول على إشعارات حول المنشورات والتحديثات الجديدة.
+                </p>
+                <div className="space-y-2">
+                  <Input placeholder="بريدك الإلكتروني" />
+                  <Button className="w-full">اشتراك</Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="md:col-span-2">
             <div className="mb-8">
               <Input
                 type="search"
-                placeholder="Search posts..."
+                placeholder="البحث في المقالات..."
                 className="max-w-md"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -90,7 +128,7 @@ export default function Blog() {
 
             {filteredPosts.length === 0 ? (
               <div className="py-12 text-center">
-                <p className="text-muted-foreground">No posts found matching your search.</p>
+                <p className="text-muted-foreground">لا توجد مقالات تطابق بحثك.</p>
               </div>
             ) : (
               <div className="space-y-10">
@@ -110,50 +148,12 @@ export default function Blog() {
                     </h3>
                     <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                     <Link to={`/blog/${post.id}`} className="text-primary link-hover font-medium">
-                      Read More
+                      قراءة المزيد
                     </Link>
                   </article>
                 ))}
               </div>
             )}
-          </div>
-
-          <div>
-            <div className="border rounded-lg p-6 sticky top-24">
-              <h3 className="font-medium mb-4">Categories</h3>
-              <div className="space-y-2">
-                {categories.map((category) => (
-                  <Button
-                    key={category}
-                    variant="ghost"
-                    className="w-full justify-start"
-                    onClick={() => setSearchTerm(category)}
-                  >
-                    {category}
-                  </Button>
-                ))}
-                {searchTerm && (
-                  <Button
-                    variant="outline"
-                    className="w-full mt-4"
-                    onClick={() => setSearchTerm("")}
-                  >
-                    Clear Filter
-                  </Button>
-                )}
-              </div>
-
-              <div className="mt-8 pt-8 border-t">
-                <h3 className="font-medium mb-4">Newsletter</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Subscribe to get notified about new posts and updates.
-                </p>
-                <div className="space-y-2">
-                  <Input placeholder="Your email" />
-                  <Button className="w-full">Subscribe</Button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

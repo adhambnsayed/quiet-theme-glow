@@ -4,22 +4,22 @@ import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
-    <section className="pt-32 pb-16">
+    <section className="pt-32 pb-16" dir="rtl">
       <div className="page-container">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            Hi, I'm <span className="text-primary">Adham-Sayed</span>
+            مرحباً، أنا <span className="text-primary">أدهم سيد</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            A passionate web developer building beautiful interfaces and experiences.
-            I craft clean code and transform ideas into digital reality.
+            مطور ويب متخصص في بناء واجهات استخدام جميلة وتجارب مستخدم متميزة.
+            أقوم بكتابة كود نظيف وتحويل الأفكار إلى واقع رقمي.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button asChild size="lg">
-              <Link to="/contact">Get in Touch</Link>
+              <Link to="/contact">تواصل معي</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link to="/projects">View My Work</Link>
+              <Link to="/blog">المدونة</Link>
             </Button>
           </div>
         </div>

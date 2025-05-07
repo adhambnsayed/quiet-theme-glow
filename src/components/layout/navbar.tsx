@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "../theme-toggle";
@@ -20,11 +19,10 @@ export function Navbar() {
   }, []);
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" },
+    { name: "الرئيسية", path: "/" },
+    { name: "عني", path: "/about" },
+    { name: "المدونة", path: "/blog" },
+    { name: "تواصل معي", path: "/contact" },
   ];
 
   return (
@@ -35,7 +33,7 @@ export function Navbar() {
     >
       <div className="page-container flex items-center justify-between h-16 sm:h-20">
         <Link to="/" className="text-lg sm:text-xl font-medium">
-          <span className="text-primary">Adham-Sayed</span>
+          <span className="text-primary">أدهم سيد</span>
         </Link>
 
         <nav className="hidden md:flex items-center space-x-1">

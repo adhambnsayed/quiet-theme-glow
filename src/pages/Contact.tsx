@@ -35,8 +35,8 @@ export default function Contact() {
     // Simulate form submission
     setTimeout(() => {
       toast({
-        title: "Message sent!",
-        description: "Thanks for reaching out. I'll get back to you soon.",
+        title: "تم إرسال الرسالة!",
+        description: "شكرًا للتواصل. سأرد عليك قريبًا.",
       });
       setFormData({
         name: "",
@@ -49,43 +49,43 @@ export default function Contact() {
   };
 
   return (
-    <div className="pt-28">
+    <div className="pt-28" dir="rtl">
       <div className="page-container">
         <SectionHeading
-          title="Get in Touch"
-          subtitle="Have a question or want to work together? Reach out to me directly"
-          align="left"
+          title="تواصل معي"
+          subtitle="هل لديك سؤال أو ترغب في العمل معًا؟ تواصل معي مباشرة"
+          align="right"
         />
 
         <div className="grid md:grid-cols-2 gap-10">
           <div>
-            <h3 className="text-2xl font-medium mb-4">Let's Connect</h3>
+            <h3 className="text-2xl font-medium mb-4">لنتواصل</h3>
             <p className="text-muted-foreground mb-6">
-              I'm currently available for freelance work and open to new opportunities.
-              If you have a project that you want to get started, think you need my help
-              with something, or just want to say hello, then get in touch.
+              أنا متاح حاليًا للعمل الحر ومنفتح على الفرص الجديدة.
+              إذا كان لديك مشروع ترغب في بدئه، أو تعتقد أنني يمكنني مساعدتك في شيء ما،
+              أو ترغب فقط في إلقاء التحية، فتواصل معي.
             </p>
 
             <div className="space-y-6">
               <div>
-                <h4 className="font-medium mb-2">Email</h4>
+                <h4 className="font-medium mb-2">البريد الإلكتروني</h4>
                 <p className="text-muted-foreground">adhamebnsayedbnhanafi@gmail.com</p>
               </div>
               <div>
-                <h4 className="font-medium mb-2">Location</h4>
-                <p className="text-muted-foreground">Egypt, Giza</p>
+                <h4 className="font-medium mb-2">الموقع</h4>
+                <p className="text-muted-foreground">مصر، الجيزة</p>
               </div>
               <div>
-                <h4 className="font-medium mb-2">Follow Me</h4>
+                <h4 className="font-medium mb-2">تابعني</h4>
                 <div className="flex space-x-4">
                   <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-                    Twitter
+                    تويتر
                   </a>
                   <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-                    GitHub
+                    جيثب
                   </a>
                   <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
-                    LinkedIn
+                    لينكد إن
                   </a>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit}>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="name">Name</Label>
+                    <Label htmlFor="name">الاسم</Label>
                     <Input
                       id="name"
                       name="name"
@@ -108,7 +108,7 @@ export default function Contact() {
                   </div>
                   
                   <div>
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">البريد الإلكتروني</Label>
                     <Input
                       id="email"
                       name="email"
@@ -120,7 +120,7 @@ export default function Contact() {
                   </div>
                   
                   <div>
-                    <Label htmlFor="subject">Subject</Label>
+                    <Label htmlFor="subject">الموضوع</Label>
                     <Input
                       id="subject"
                       name="subject"
@@ -131,7 +131,7 @@ export default function Contact() {
                   </div>
                   
                   <div>
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message">الرسالة</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -143,7 +143,7 @@ export default function Contact() {
                   </div>
                   
                   <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? "جاري الإرسال..." : "إرسال الرسالة"}
                   </Button>
                 </div>
               </form>
