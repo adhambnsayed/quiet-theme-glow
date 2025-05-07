@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -21,6 +21,19 @@ export default function Admin() {
   const { toast } = useToast();
   const [blogPosts, setBlogPosts] = useState<any[]>([]);
 
+  // استرجاع المقالات المحفوظة عند تحميل الصفحة
+  useEffect(() => {
+    const storedPosts = localStorage.getItem('blogPosts');
+    if (storedPosts) {
+      setBlogPosts(JSON.parse(storedPosts));
+    }
+  }, []);
+
+  // حفظ المقالات في localStorage عند تغييرها
+  useEffect(() => {
+    localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
+  }, [blogPosts]);
+
   const form = useForm<z.infer<typeof blogPostSchema>>({
     resolver: zodResolver(blogPostSchema),
     defaultValues: {
@@ -33,7 +46,7 @@ export default function Admin() {
 
   const onSubmit = (values: z.infer<typeof blogPostSchema>) => {
     const newPost = {
-      id: blogPosts.length + 1,
+      id: Date.now(), // استخدام الطابع الزمني كمعرف فريد
       title: values.title,
       content: values.content,
       excerpt: values.content.substring(0, 150) + "...",

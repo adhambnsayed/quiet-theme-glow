@@ -7,58 +7,8 @@ import { Link } from "react-router-dom";
 
 export default function Blog() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [blogPosts, setBlogPosts] = useState([]);
   
-  const blogPosts = [
-    {
-      id: 1,
-      title: "بناء واجهات متجاوبة",
-      excerpt: "تعلم كيفية إنشاء واجهات تعمل على جميع أحجام الأجهزة دون تنازل.",
-      date: "1 مايو 2025",
-      category: "تطوير",
-      readTime: "5 دقائق قراءة"
-    },
-    {
-      id: 2,
-      title: "مستقبل الرسوم المتحركة على الويب",
-      excerpt: "استكشاف تقنيات الرسوم المتحركة الحديثة التي تعزز تجربة المستخدم دون التضحية بالأداء.",
-      date: "15 أبريل 2025",
-      category: "تصميم",
-      readTime: "8 دقائق قراءة"
-    },
-    {
-      id: 3,
-      title: "إمكانية الوصول في تطبيقات الويب الحديثة",
-      excerpt: "لماذا يجب أن تكون إمكانية الوصول أولوية وكيفية تنفيذها في مشاريعك.",
-      date: "22 مارس 2025",
-      category: "تطوير",
-      readTime: "7 دقائق قراءة"
-    },
-    {
-      id: 4,
-      title: "سير عملي التطويري في 2025",
-      excerpt: "الأدوات والملحقات والعمليات التي أستخدمها للبقاء منتجًا ومركزًا.",
-      date: "10 مارس 2025",
-      category: "سير العمل",
-      readTime: "6 دقائق قراءة"
-    },
-    {
-      id: 5,
-      title: "التصميم مع الوضع الداكن في الاعتبار",
-      excerpt: "أفضل الممارسات لإنشاء واجهات جميلة تعمل بشكل جيد في كل من الوضع الفاتح والداكن.",
-      date: "28 فبراير 2025",
-      category: "تصميم",
-      readTime: "5 دقائق قراءة"
-    },
-    {
-      id: 6,
-      title: "إدارة الحالة ببساطة",
-      excerpt: "نهج حديث لإدارة الحالة في تطبيقات رياكت دون تعقيد.",
-      date: "15 فبراير 2025",
-      category: "تطوير",
-      readTime: "9 دقائق قراءة"
-    },
-  ];
-
   const filteredPosts = blogPosts.filter(post => 
     post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -128,7 +78,12 @@ export default function Blog() {
 
             {filteredPosts.length === 0 ? (
               <div className="py-12 text-center">
-                <p className="text-muted-foreground">لا توجد مقالات تطابق بحثك.</p>
+                <p className="text-muted-foreground">لم يتم إضافة أي مقالات بعد.</p>
+                <div className="mt-6">
+                  <Button asChild>
+                    <Link to="/admin">إضافة مقال جديد</Link>
+                  </Button>
+                </div>
               </div>
             ) : (
               <div className="space-y-10">
