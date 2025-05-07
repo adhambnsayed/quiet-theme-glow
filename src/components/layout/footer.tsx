@@ -1,5 +1,6 @@
 
 import { Link } from "react-router-dom";
+import { Facebook, Twitter, Smartphone } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,20 +21,31 @@ export function Footer() {
               الشروط
             </Link>
             <a 
-              href="https://github.com" 
+              href="#" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors mr-4"
+              aria-label="فيسبوك"
             >
-              جيثب
+              <Facebook size={18} />
             </a>
             <a 
-              href="https://twitter.com" 
+              href="#" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors mr-4"
+              aria-label="واتساب"
+            >
+              <Smartphone size={18} />
+            </a>
+            <a 
+              href="#" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="تويتر"
             >
-              تويتر
+              <Twitter size={18} />
             </a>
           </div>
         </div>
