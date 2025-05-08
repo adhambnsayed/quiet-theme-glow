@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -19,6 +20,7 @@ const blogPostSchema = z.object({
 
 export default function Admin() {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [blogPosts, setBlogPosts] = useState<any[]>([]);
 
   // استرجاع المقالات المحفوظة عند تحميل الصفحة
@@ -77,10 +79,21 @@ export default function Admin() {
     });
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    toast({
+      title: "تم تسجيل الخروج بنجاح",
+    });
+    navigate("/login");
+  };
+
   return (
     <div className="pt-28" dir="rtl">
       <div className="page-container">
-        <h1 className="text-3xl font-bold mb-8">لوحة التحكم</h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold">لوحة التحكم</h1>
+          <Button variant="outline" onClick={handleLogout}>تسجيل الخروج</Button>
+        </div>
 
         <div className="grid md:grid-cols-5 gap-8">
           <div className="md:col-span-2">
