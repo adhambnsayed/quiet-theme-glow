@@ -47,11 +47,16 @@ export default function Admin() {
   });
 
   const onSubmit = (values: z.infer<typeof blogPostSchema>) => {
+    // إنشاء مقتطف من المحتوى (أول 150 حرف)
+    const excerpt = values.content.length > 150 
+      ? values.content.substring(0, 150) + "..."
+      : values.content;
+      
     const newPost = {
       id: Date.now(), // استخدام الطابع الزمني كمعرف فريد
       title: values.title,
       content: values.content,
-      excerpt: values.content.substring(0, 150) + "...",
+      excerpt: excerpt,
       date: new Date().toLocaleDateString("ar-EG", {
         year: "numeric",
         month: "long",
@@ -64,14 +69,20 @@ export default function Admin() {
 
     setBlogPosts([newPost, ...blogPosts]);
     form.reset();
+    
+    // عرض رسالة نجاح
     toast({
       title: "تم إنشاء المقال بنجاح",
       description: "تم إضافة المقال إلى قائمة المقالات",
     });
+    
+    // طباعة في وحدة التحكم للتأكد من حفظ المقالات
+    console.log('All posts after adding new one:', [newPost, ...blogPosts]);
   };
 
   const deletePost = (id: number) => {
-    setBlogPosts(blogPosts.filter(post => post.id !== id));
+    const updatedPosts = blogPosts.filter(post => post.id !== id);
+    setBlogPosts(updatedPosts);
     toast({
       title: "تم حذف المقال",
       description: "تم حذف المقال من قائمة المقالات",

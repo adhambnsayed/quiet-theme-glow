@@ -2,19 +2,28 @@
 import { SectionHeading } from "@/components/layout/section-heading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Blog() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [blogPosts, setBlogPosts] = useState([]);
+  const [blogPosts, setBlogPosts] = useState<any[]>([]);
+  
+  // استرجاع المقالات من localStorage عند تحميل الصفحة
+  useEffect(() => {
+    const storedPosts = localStorage.getItem('blogPosts');
+    if (storedPosts) {
+      setBlogPosts(JSON.parse(storedPosts));
+    }
+  }, []);
   
   const filteredPosts = blogPosts.filter(post => 
-    post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    post.category.toLowerCase().includes(searchTerm.toLowerCase())
+    post.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    post.content?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    post.category?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // استخراج جميع التصنيفات الفريدة من المقالات
   const categories = [...new Set(blogPosts.map(post => post.category))];
 
   return (
@@ -31,16 +40,20 @@ export default function Blog() {
             <div className="border rounded-lg p-6 sticky top-24">
               <h3 className="font-medium mb-4">التصنيفات</h3>
               <div className="space-y-2">
-                {categories.map((category) => (
-                  <Button
-                    key={category}
-                    variant="ghost"
-                    className="w-full justify-start"
-                    onClick={() => setSearchTerm(category)}
-                  >
-                    {category}
-                  </Button>
-                ))}
+                {categories.length > 0 ? (
+                  categories.map((category) => (
+                    <Button
+                      key={category}
+                      variant="ghost"
+                      className="w-full justify-start"
+                      onClick={() => setSearchTerm(category)}
+                    >
+                      {category}
+                    </Button>
+                  ))
+                ) : (
+                  <p className="text-sm text-muted-foreground">لا توجد تصنيفات بعد</p>
+                )}
                 {searchTerm && (
                   <Button
                     variant="outline"

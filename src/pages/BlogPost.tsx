@@ -10,7 +10,6 @@ export default function BlogPost() {
   const [relatedPosts, setRelatedPosts] = useState<any[]>([]);
   
   useEffect(() => {
-    // في التطبيق الحقيقي، هنا سيتم جلب المقال من API أو من localStorage
     const storedPosts = localStorage.getItem('blogPosts');
     if (storedPosts) {
       const allPosts = JSON.parse(storedPosts);
@@ -26,14 +25,6 @@ export default function BlogPost() {
       }
     }
   }, [id]);
-  
-  // إنشاء مقتطف من المحتوى عن طريق إزالة HTML وأخذ أول 150 حرف
-  const createExcerpt = (content: string) => {
-    // إزالة علامات HTML والحصول على النص العادي
-    const plainText = content.replace(/<[^>]+>/g, '');
-    // إرجاع أول 150 حرف
-    return plainText.trim().substring(0, 150) + '...';
-  };
 
   if (!post) {
     return (
@@ -88,10 +79,11 @@ export default function BlogPost() {
             </div>
           )}
           
-          <div 
-            className="prose prose-lg max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <div className="prose prose-lg max-w-none">
+            {post.content.split('\n').map((paragraph: string, index: number) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
           
           {relatedPosts.length > 0 && (
             <div className="mt-12 pt-8 border-t">
@@ -107,7 +99,7 @@ export default function BlogPost() {
                         </Link>
                       </h3>
                       <p className="text-muted-foreground text-sm line-clamp-2">
-                        {createExcerpt(relatedPost.content)}
+                        {relatedPost.excerpt}
                       </p>
                     </CardContent>
                   </Card>
